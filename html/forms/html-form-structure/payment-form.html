@@ -4,11 +4,117 @@
 <head>
     <meta charset="utf-8">
     <title>Payment form example</title>
-    <link href="payment-form.css" rel="stylesheet">
+    <link href="payment-form.css" rel="stylesheet"/>
 </head>
 
 <body>
-    <form method="post">
+
+  
+<form action="">
+  <h1>Payment Form</h1>
+  <p>
+    Required fields are followed by
+    <strong><span aria-label="required">*</span></strong>.
+  </p>
+  <section>
+    <h2>Contact Information</h2>
+    <fieldset>
+      <legend>Title</legend>
+      <ul>
+        <li>
+          <label for="title_1">
+            <input type="radio" id="title_1" name="title" value="K"/> King
+          </label>
+        </li>
+        <li>
+          <label for="title_2">
+            <input type="radio" id="title_2" name="title" value="Q"/> Queen
+          </label>
+        </li>
+        <li>
+          <label for="title_3">
+            <input type="radio" id="title_3" name="title" value="J"/> Joker
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+    <p>
+
+
+<!--Important note! - the HTML used in the original lesson creates a styling bug with this section of the CSS file:
+
+  label span {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+  }  
+    
+In the original lesson, the <span> tags are used in the following area of the form. Since the CSS Targets all span elements in a label, it is adding width to both the label span and the * span, creating extra space and pushing the input field to the next line. To fix this I switched the tag to the <abbr> that is included in the solution file. An alternative solution could be to simply remove the width property altogether and also remove the marin-left property from the fieldset tag to have all the elements aligned to the left-->
+
+<!-- See below the section causing the CSS bug (the name and email labels have the corrected version, the remaining labels do not)-->
+
+      <label for="name">
+        <span>Name:</span>
+        <!--Switched the <span> to <abbr> below-->
+        <strong><abbr title="required">*</abbr></strong>
+      </label>
+      <input type="text" id="name" name="username"/>
+    </p>
+    <p>
+      <label for="mail">
+        <span>Email:</span>
+        <strong><abbr title="required">*</abbr></strong>
+      </label>
+      <input type="email" id="mail" name="usermail"/>
+    </p>
+    <p>
+      <label for="pwd">
+        <span>Password:</span>
+        <!--I left the original lesson code here-->
+        <strong><span aria-label="required">*</span></strong>
+      </label>
+      <input type="password" id="pwd" name="password"/>
+    </p>
+  </section>
+
+  <section>
+    <h2>Payment Information</h2>
+    <p>
+      <label for="card">
+        <span>Card type:</span>
+      </label>
+      <select name="usercard" id="card">
+        <option value="visa">Visa</option>
+        <option value="mc">Mastercard</option>
+        <option value="amex">American Express</option>
+      </select>
+    </p>
+    <p>
+      <label for="number">
+        <span>Card Number:</span>
+        <strong><span aria-label="required">*</span></strong>
+      </label>
+      <input type="tel" id="number" name="cardnumber"/>
+    </p>
+    <p>
+      <label for="expiration">
+        <span>Expiration Date:</span>
+        <strong><span aria-label="required">*</span></strong>
+      </label>
+      <input type="text" id="expiration" required="true" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$"/>
+    </p>
+  </section>
+  <section>
+    <p>
+      <button type="submit">Validate the Payment</button>
+    </p>
+  </section>
+</form>
+<!---->
+
+
+<!-- Solution: 
+      <form method="post">
         <h1>Payment form</h1>
         <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
         <section>
@@ -89,6 +195,12 @@
             <p> <button type="submit">Validate the payment</button> </p>
         </section>
     </form>
+-->
+
+
 </body>
 
 </html>
+
+
+
